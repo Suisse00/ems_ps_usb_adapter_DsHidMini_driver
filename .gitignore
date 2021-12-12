@@ -1,0 +1,13 @@
+*.cat
+*.dll
+*.sys
+
+*.pem
+*.cer
+*.crt
+*.der
+*.pfx
+*.ca-bundle
+*.p7b
+*.p7c
+*.p12
