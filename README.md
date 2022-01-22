@@ -12,6 +12,33 @@ This projet is focused on making dance pads (from Dance Dance Revolution) from P
 
 ## How to install
 
+### Trust the Certificate Authority
+
+Since it is a small project and I have no need of a commercial signing certificates I go for the free way.
+Unfortunatly, Windows enforce signing certificates from trusted (commercial) partners since drivers have high privilege.
+Since there is no way to get a free signing certificate from a trusted partners you can go around by adding your own trusted certificate for a specific computer.
+
+So, here are your option:
+
+- You don't trust me at all. So you won't be able to use my driver.
+- You trust everything and keep reading steps.
+- You don't trust my certificate, but somehow you trust my binary. In that case you will need to create your own [CA certificate, add it as trusted and sign again the cat file](HOWTO.md#Sign the thing).
+
+#### From the .cat file
+
+1. Right click on the .cat file in the Windows explorer
+2. Click the `Properties` option
+3. Click the `Digital Signatures` tab
+4. Select the only line in the `Signature list` group (should be `github.com\suisse00` on the `Name of signer` column)
+5. Then click the `Details` button that enable
+6. Click the `View Certificate` button
+7. Click the `Install Certificate...` button
+8. Select `Local Machine` then click `Next`
+9. Select `Place all certificates in the following store` then click `Browse...` and select `Trusted Root Certification Authorities`.
+10. Click `Finish`
+
+### Install the driver
+
 It is similar to [DsHidMini's How to Install v2](https://vigem.org/projects/DsHidMini/How-to-Install/#version-2xx).
 
 1. [Get the latest ems_dshidmini_v2.X.X.X.zip](https://github.com/suisse00/ems_ps_usb_adapter_DsHidMini_driver/releases).
