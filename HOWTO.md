@@ -11,12 +11,14 @@ The INF has been created based on https://github.com/ViGEm/DsHidMini/releases/ta
     - x64\dshidmini\LICENSE
     - x64\dshidmini\dshidmini.dll
 4. I then created a new directory (somewhere on your computer) where I moved AND renamed the dshidmini directories to their architecture. \
-TLDR: `x86\dshidmini` become `x86` and `x64\dshidmini` become `x64`.
+So `x86\dshidmini` become `x86` and `x64\dshidmini` become `x64`.
 
 ## Get the latest version of this repository
 
 1. [Download the latest zip from this repository](https://github.com/suisse00/ems_ps_usb_adapter_DsHidMini_driver/releases)
-2. Unzip it into the new directory you created from the section above. You should see a `dshidmini.inf` file within your `x86` and `x64` directories with `dshidmini.dll`.
+2. Unzip it into the new directory you created from the section above. \
+Don't overwrite existing files \
+You should see a `dshidmini.inf` file within your `x86` and `x64` directories with `dshidmini.dll`. This new .inf file is based from the original DsHidMini github with some minor changes.
 
 ## Get tools
 
