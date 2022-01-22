@@ -32,9 +32,10 @@ As per the [WDK download page](https://docs.microsoft.com/en-us/windows-hardware
 2. Navigate to the new directory you created with the simplified DsHidMini directories.
 3. Execute `Inf2Cat.exe /driver:x86 /os:Vista_X86,Server2008_X86,7_X86,8_X86,6_3_X86,10_X86`
 4. Execute `Inf2Cat.exe /driver:x64 /os:Vista_X64,Server2008_X64,7_X64,Server2008R2_X64,8_X64,Server8_X64,6_3_X64,Server6_3_X64,10_X64`
-5. Execute `makecert -r -pe -ss PrivateCertStore -n "CN=LazyNameOfWhoWillSign" -eku 1.3.6.1.5.5.7.3.3 CodeSigning.cer`. \
+5. Execute `makecert -r -pe -a sha512 -n "CN=LazyNameOfWhoWillSign" -eku 1.3.6.1.5.5.7.3.3 -sv CodeSigning.pvk CodeSigning.cer`. \
 Technically should be done once for all releases
-6. Execute `certmgr /add CodeSigning.cer /s /r localMachine root` (this is the part that need to be administrator) \
+6. Excute `pvk2pfx.exe -pvk CodeSigning.pvk -spc CodeSigning.cer -pfx CodeSigning.pfx`
+7. Execute `certmgr /add CodeSigning.cer /s /r localMachine root` (this is the part that need to be administrator) \
 Technically should be done once for all releases
-7. Execute `Signtool sign /v /fd sha256 /s PrivateCertStore /n "LazyNameOfWhoWillSign" /t http://timestamp.digicert.com x86\dshidmini.cat x64\dshidmini.cat`.
-8. Create the final release; zip everything in the current directory your prompt is except the `CodeSigning.cer` file.
+8. Execute `Signtool sign /v /fd sha512 /f CodeSigning.pfx /t http://timestamp.digicert.com x86\dshidmini.cat x64\dshidmini.cat`.
+9. Create the final release; zip everything in the current directory your prompt is at, except all `CodeSigning` files.
